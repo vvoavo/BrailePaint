@@ -5,8 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BrailePaint"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="BrailePaint" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
+        <StackPanel Grid.Column="0">
+
+        </StackPanel>
+
+        <DockPanel Grid.Column="1">
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                <Label>x:</Label>
+                <Label Width="50" x:Name="x_coord_label" Content="{Binding coord_x}"></Label>
+                <Label>y:</Label>
+                <Label Width="50" x:Name="y_coord_label" Content="{Binding coord_y}"></Label>
+            </StackPanel>
+            <Border  Padding="20">
+                <Canvas Background="LightGray" x:Name="main_canvas" MouseMove="main_canvas_MouseMove">
+
+                </Canvas>
+            </Border>
+        </DockPanel>
     </Grid>
 </Window>
