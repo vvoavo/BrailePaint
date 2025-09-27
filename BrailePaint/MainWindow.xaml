@@ -4,8 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BrailePaint"
+        xmlns:c="clr-namespace:BrailePaint.Classes"
         mc:Ignorable="d"
-        Title="BrailePaint" Height="450" Width="800">
+        Title="BrailePaint" Height="450" Width="800" SizeChanged="Window_SizeChanged"
+        MinHeight="200" MinWidth="400">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
@@ -13,7 +15,9 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0">
-
+            <ListBox x:Name="log" Height="250">
+                
+            </ListBox>
         </StackPanel>
 
         <DockPanel Grid.Column="1">
@@ -23,9 +27,17 @@
                 <Label>y:</Label>
                 <Label Width="50" x:Name="y_coord_label" Content="{Binding coord_y}"></Label>
             </StackPanel>
-            <Border  Padding="20">
+            <Border  Padding="0,0,20,20">
                 <Canvas Background="LightGray" x:Name="main_canvas" MouseMove="main_canvas_MouseMove">
-
+                    <c:ListBoxForCanvas x:Name="listbox_canvas" Background="Pink" Padding="0" Margin="0"
+                             FontFamily="Cascadia Mono" 
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                             ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                             MouseLeftButtonDown="listbox_canvas_MouseLeftButtonDown"
+                             MouseLeftButtonUp="listbox_canvas_MouseLeftButtonUp"
+                             IsEnabled="True"
+                             >
+                    </c:ListBoxForCanvas>
                 </Canvas>
             </Border>
         </DockPanel>
